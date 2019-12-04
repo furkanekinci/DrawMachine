@@ -15,6 +15,8 @@ namespace DrawMachine
     {
         System.Media.SoundPlayer Player;
 
+        int MaxIntervalForRoller = 400;
+
         int ResultCounterFix = 3;
         int ResultCounter = 0;
 
@@ -308,6 +310,8 @@ namespace DrawMachine
         {
             SetNumberPosition();
 
+            pbrRandom.Maximum = this.MaxIntervalForRoller;
+
             Player = new System.Media.SoundPlayer(DrawMachine.Properties.Resources.tik);
         }
         private void frmMain_ResizeEnd(object sender, EventArgs e)
@@ -454,8 +458,6 @@ namespace DrawMachine
 
         private void timShowNumbers_Tick(object sender, EventArgs e)
         {
-            pbrRandom.Maximum = 500;
-
             Random r = new Random();
             int rInt = -1, preVal = -1;
 
@@ -485,17 +487,10 @@ namespace DrawMachine
             this.RandomNumberMultiplier *= 1.11D;
             timShowNumbers.Interval += Convert.ToInt32(this.RandomNumberMultiplier); ;
 
-            if (pbrRandom.Maximum > timShowNumbers.Interval)
-            {
-                pbrRandom.Value = timShowNumbers.Interval;
-            }
-            else
+            if (timShowNumbers.Interval > this.MaxIntervalForRoller)
             {
                 pbrRandom.Value = pbrRandom.Maximum;
-            }
 
-            if (timShowNumbers.Interval > 500)
-            {
                 this.RandomNumberMultiplier = 1D;
 
                 timShowNumbers.Interval = 15;
@@ -508,11 +503,6 @@ namespace DrawMachine
                 (flpRandoms.Controls[tag.Length - 1] as ucNumberWithRate).Number = lblNumber.Text;
                 (flpRandoms.Controls[tag.Length - 1] as ucNumberWithRate).Rate = CalculateRate().ToString();
 
-                if (flpRandoms.Controls.Count > tag.Length)
-                {
-                    PrepareNextNumber();
-                }
-
                 lblNumber.Visible = false;
 
                 (flpRandoms.Controls[tag.Length - 1] as ucNumberWithRate).Visible = false;
@@ -522,6 +512,10 @@ namespace DrawMachine
                 lblMoveNumber.Visible = true;
 
                 timWaitThenMove.Enabled = true;
+            }
+            else
+            {
+                pbrRandom.Value = timShowNumbers.Interval;
             }
         }
         private void timWaitThenMove_Tick(object sender, EventArgs e)
@@ -565,6 +559,13 @@ namespace DrawMachine
                     ShowResult();
                 }
             }
+        }
+        private void timWaiter_Tick(object sender, EventArgs e)
+        {
+            PrepareNextNumber();
+
+            timWaiter.Enabled = false;
+            timShowNumbers.Enabled = true;
         }
         private void timShowResult_Tick(object sender, EventArgs e)
         {
@@ -614,11 +615,6 @@ namespace DrawMachine
 
                 btnDraw.Show();
             }
-        }
-        private void timWaiter_Tick(object sender, EventArgs e)
-        {
-            timWaiter.Enabled = false;
-            timShowNumbers.Enabled = true;
         }
     }
 }
