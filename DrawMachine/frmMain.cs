@@ -515,12 +515,7 @@ namespace DrawMachine
                 lblMoveNumber.BringToFront();
                 lblMoveNumber.Visible = true;
 
-                LabelFader lf = new LabelFader();
-                lf.attachToControl(lblMoveNumber);
-                lf.setColorSteps(20);
-                lf.doFade();
-                 
-                timMoveNumber.Enabled = true;
+                timWaitThenMove.Enabled = true;
             }
         }
         private void timShowResult_Tick(object sender, EventArgs e)
@@ -604,6 +599,18 @@ namespace DrawMachine
         {
             timWaiter.Enabled = false;
             timShowNumbers.Enabled = true;
+        }
+
+        private void timWaitThenMove_Tick(object sender, EventArgs e)
+        {
+            timWaitThenMove.Enabled = false;
+
+            LabelFader lf = new LabelFader();
+            lf.attachToControl(lblMoveNumber);
+            lf.setColorSteps(20);
+            lf.doFade();
+
+            timMoveNumber.Enabled = true;
         }
     }
 }

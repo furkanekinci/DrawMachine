@@ -45,6 +45,7 @@
             this.pbrRandom = new System.Windows.Forms.ProgressBar();
             this.lblRandomMain = new DrawMachine.ucNumberWithRate();
             this.lblLine = new System.Windows.Forms.Label();
+            this.timWaitThenMove = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,6 +200,11 @@
             this.lblLine.Size = new System.Drawing.Size(142, 1);
             this.lblLine.TabIndex = 10;
             // 
+            // timWaitThenMove
+            // 
+            this.timWaitThenMove.Interval = 1000;
+            this.timWaitThenMove.Tick += new System.EventHandler(this.timWaitThenMove_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -251,6 +257,7 @@
         private System.Windows.Forms.Timer timWaiter;
         private System.Windows.Forms.ProgressBar pbrRandom;
         private System.Windows.Forms.Label lblLine;
+        private System.Windows.Forms.Timer timWaitThenMove;
     }
 }
 
