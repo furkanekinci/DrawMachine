@@ -98,6 +98,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="new-product.ico" />
+    <None Include="Resources\cheering.wav" />
+    <None Include="Resources\tik.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

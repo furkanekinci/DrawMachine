@@ -61,12 +61,30 @@ namespace DrawMachine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream cheering {
+            get {
+                return ResourceManager.GetStream("cheering", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] digital_7 {
             get {
                 object obj = ResourceManager.GetObject("digital_7", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream tik {
+            get {
+                return ResourceManager.GetStream("tik", resourceCulture);
             }
         }
     }

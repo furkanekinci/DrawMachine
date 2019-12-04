@@ -13,6 +13,8 @@ namespace DrawMachine
 {
     public partial class frmMain : Form
     {
+        System.Media.SoundPlayer Player;
+
         int ResultCounterFix = 3;
         int ResultCounter = 0;
 
@@ -305,6 +307,8 @@ namespace DrawMachine
         private void frmMain_Load(object sender, EventArgs e)
         {
             SetNumberPosition();
+
+            Player = new System.Media.SoundPlayer(DrawMachine.Properties.Resources.tik);
         }
         private void frmMain_ResizeEnd(object sender, EventArgs e)
         {
@@ -468,13 +472,15 @@ namespace DrawMachine
                         break;
                     }
                 } while (rInt == preVal);
-            }
+            }   
             else
             {
                 rInt = r.Next(0, this.PossibleNextValues.Count);
             }
 
+            Player.Stop();
             SetNumber(this.PossibleNextValues[rInt]);
+            Player.Play();
 
             this.RandomNumberMultiplier *= 1.11D;
             timShowNumbers.Interval += Convert.ToInt32(this.RandomNumberMultiplier); ;
@@ -585,6 +591,11 @@ namespace DrawMachine
                     code = code.Insert(Convert.ToInt32(flpRandoms.Controls[i].Tag), lbl.Text);
                     code = code.Remove(Convert.ToInt32(flpRandoms.Controls[i].Tag) + 1, 1);
                 }
+
+
+                Player = new System.Media.SoundPlayer(DrawMachine.Properties.Resources.cheering);
+                Player.Play();
+                Player = new System.Media.SoundPlayer(DrawMachine.Properties.Resources.tik);
 
                 KeyValuePair<string, string> item = ValueList.Where(x => x.Key.Equals(code)).First();
 
