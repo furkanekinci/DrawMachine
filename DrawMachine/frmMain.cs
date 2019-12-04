@@ -70,7 +70,7 @@ namespace DrawMachine
 
             DataRow dr;
 
-            foreach (KeyValuePair<string, string> item in ValueList.OrderBy(x=>x.Value))
+            foreach (KeyValuePair<string, string> item in ValueList.OrderBy(x => x.Value))
             {
                 dr = dtList.NewRow();
 
@@ -196,7 +196,7 @@ namespace DrawMachine
 
         private void ShowResult()
         {
-            this.ResultCounter = this.ResultCounterFix + 1;            
+            this.ResultCounter = this.ResultCounterFix + 1;
             timShowResult.Enabled = true;
         }
 
@@ -518,6 +518,48 @@ namespace DrawMachine
                 timWaitThenMove.Enabled = true;
             }
         }
+        private void timWaitThenMove_Tick(object sender, EventArgs e)
+        {
+            timWaitThenMove.Enabled = false;
+
+            LabelFader lf = new LabelFader();
+            lf.attachToControl(lblMoveNumber);
+            lf.setColorSteps(20);
+            lf.doFade();
+
+            timMoveNumber.Enabled = true;
+        }
+        private void timMoveNumber_Tick(object sender, EventArgs e)
+        {
+            if (flpRandoms.Left > lblMoveNumber.Left)
+            {
+                this.NumberMoveSize *= 1.7D;
+                lblMoveNumber.Left += Convert.ToInt32(this.NumberMoveSize);
+            }
+            else
+            {
+                this.NumberMoveSize = 1;
+
+                string tag = flpRandoms.Tag.ToString();
+
+                timMoveNumber.Enabled = false;
+                lblMoveNumber.Visible = false;
+
+                (flpRandoms.Controls[flpRandoms.Tag.ToString().Length - 1] as ucNumberWithRate).Visible = true;
+
+                SetNumber("-");
+                lblNumber.Visible = true;
+
+                if (flpRandoms.Controls.Count > tag.Length)
+                {
+                    timWaiter.Enabled = true;
+                }
+                else
+                {
+                    ShowResult();
+                }
+            }
+        }
         private void timShowResult_Tick(object sender, EventArgs e)
         {
             timShowResult.Interval = 1000;
@@ -562,55 +604,10 @@ namespace DrawMachine
                 btnDraw.Show();
             }
         }
-
-        private void timMoveNumber_Tick(object sender, EventArgs e)
-        {
-            if (flpRandoms.Left > lblMoveNumber.Left)
-            {
-                this.NumberMoveSize *= 1.7D;
-                lblMoveNumber.Left += Convert.ToInt32(this.NumberMoveSize);
-            }
-            else
-            {
-                this.NumberMoveSize = 1;
-
-                string tag = flpRandoms.Tag.ToString();
-
-                timMoveNumber.Enabled = false;
-                lblMoveNumber.Visible = false;
-
-                (flpRandoms.Controls[flpRandoms.Tag.ToString().Length - 1] as ucNumberWithRate).Visible = true;
-
-                SetNumber("-");
-                lblNumber.Visible = true;
-
-                if (flpRandoms.Controls.Count > tag.Length)
-                {
-                    timWaiter.Enabled = true;
-                }
-                else
-                {
-                    ShowResult();
-                }
-            }
-        }
-
         private void timWaiter_Tick(object sender, EventArgs e)
         {
             timWaiter.Enabled = false;
             timShowNumbers.Enabled = true;
-        }
-
-        private void timWaitThenMove_Tick(object sender, EventArgs e)
-        {
-            timWaitThenMove.Enabled = false;
-
-            LabelFader lf = new LabelFader();
-            lf.attachToControl(lblMoveNumber);
-            lf.setColorSteps(20);
-            lf.doFade();
-
-            timMoveNumber.Enabled = true;
         }
     }
 }
