@@ -36,6 +36,7 @@
             // 
             this.lblNumber.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(160)))));
             this.lblNumber.Location = new System.Drawing.Point(0, 0);
             this.lblNumber.Margin = new System.Windows.Forms.Padding(0);
             this.lblNumber.Name = "lblNumber";
@@ -48,6 +49,7 @@
             // 
             this.lblRate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(160)))));
             this.lblRate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblRate.Location = new System.Drawing.Point(59, 0);
             this.lblRate.Margin = new System.Windows.Forms.Padding(0);

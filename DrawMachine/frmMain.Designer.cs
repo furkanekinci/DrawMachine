@@ -42,14 +42,15 @@
             this.lblItemCount = new System.Windows.Forms.Label();
             this.timMoveNumber = new System.Windows.Forms.Timer(this.components);
             this.timWaiter = new System.Windows.Forms.Timer(this.components);
-            this.lblRandomMain = new DrawMachine.ucNumberWithRate();
             this.pbrRandom = new System.Windows.Forms.ProgressBar();
+            this.lblRandomMain = new DrawMachine.ucNumberWithRate();
+            this.lblLine = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLoadList
             // 
-            this.btnLoadList.Location = new System.Drawing.Point(216, 14);
+            this.btnLoadList.Location = new System.Drawing.Point(157, 15);
             this.btnLoadList.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadList.Name = "btnLoadList";
             this.btnLoadList.Size = new System.Drawing.Size(100, 28);
@@ -67,12 +68,15 @@
             this.grdList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.grdList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grdList.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.grdList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdList.Location = new System.Drawing.Point(16, 50);
             this.grdList.Margin = new System.Windows.Forms.Padding(4);
             this.grdList.Name = "grdList";
             this.grdList.ReadOnly = true;
-            this.grdList.Size = new System.Drawing.Size(300, 502);
+            this.grdList.RowHeadersVisible = false;
+            this.grdList.Size = new System.Drawing.Size(241, 528);
             this.grdList.TabIndex = 1;
             // 
             // btnDraw
@@ -90,11 +94,12 @@
             // lblNumber
             // 
             this.lblNumber.AutoSize = true;
-            this.lblNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 250F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblNumber.Location = new System.Drawing.Point(352, 175);
+            this.lblNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 300F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(160)))));
+            this.lblNumber.Location = new System.Drawing.Point(295, 103);
             this.lblNumber.Margin = new System.Windows.Forms.Padding(0);
             this.lblNumber.Name = "lblNumber";
-            this.lblNumber.Size = new System.Drawing.Size(269, 378);
+            this.lblNumber.Size = new System.Drawing.Size(323, 453);
             this.lblNumber.TabIndex = 3;
             this.lblNumber.Text = "-";
             this.lblNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -108,10 +113,10 @@
             // 
             this.flpRandoms.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flpRandoms.Location = new System.Drawing.Point(797, 52);
+            this.flpRandoms.Location = new System.Drawing.Point(854, 97);
             this.flpRandoms.Margin = new System.Windows.Forms.Padding(4);
             this.flpRandoms.Name = "flpRandoms";
-            this.flpRandoms.Size = new System.Drawing.Size(198, 500);
+            this.flpRandoms.Size = new System.Drawing.Size(141, 481);
             this.flpRandoms.TabIndex = 5;
             // 
             // lblResult
@@ -119,7 +124,8 @@
             this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblResult.Location = new System.Drawing.Point(9, 556);
+            this.lblResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(160)))));
+            this.lblResult.Location = new System.Drawing.Point(9, 582);
             this.lblResult.Margin = new System.Windows.Forms.Padding(0);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(990, 124);
@@ -144,12 +150,15 @@
             // 
             // lblItemCount
             // 
-            this.lblItemCount.AutoSize = true;
-            this.lblItemCount.Location = new System.Drawing.Point(123, 21);
+            this.lblItemCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblItemCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblItemCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(160)))));
+            this.lblItemCount.Location = new System.Drawing.Point(797, 51);
             this.lblItemCount.Name = "lblItemCount";
-            this.lblItemCount.Size = new System.Drawing.Size(13, 17);
+            this.lblItemCount.Size = new System.Drawing.Size(198, 37);
             this.lblItemCount.TabIndex = 7;
             this.lblItemCount.Text = "-";
+            this.lblItemCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // timMoveNumber
             // 
@@ -160,6 +169,15 @@
             // 
             this.timWaiter.Interval = 1000;
             this.timWaiter.Tick += new System.EventHandler(this.timWaiter_Tick);
+            // 
+            // pbrRandom
+            // 
+            this.pbrRandom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbrRandom.Location = new System.Drawing.Point(371, 442);
+            this.pbrRandom.Name = "pbrRandom";
+            this.pbrRandom.Size = new System.Drawing.Size(206, 4);
+            this.pbrRandom.TabIndex = 9;
             // 
             // lblRandomMain
             // 
@@ -172,20 +190,21 @@
             this.lblRandomMain.TabIndex = 8;
             this.lblRandomMain.Visible = false;
             // 
-            // pbrRandom
+            // lblLine
             // 
-            this.pbrRandom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbrRandom.Location = new System.Drawing.Point(371, 442);
-            this.pbrRandom.Name = "pbrRandom";
-            this.pbrRandom.Size = new System.Drawing.Size(206, 4);
-            this.pbrRandom.TabIndex = 9;
+            this.lblLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(160)))));
+            this.lblLine.Location = new System.Drawing.Point(854, 92);
+            this.lblLine.Name = "lblLine";
+            this.lblLine.Size = new System.Drawing.Size(142, 1);
+            this.lblLine.TabIndex = 10;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.lblLine);
             this.Controls.Add(this.pbrRandom);
             this.Controls.Add(this.lblRandomMain);
             this.Controls.Add(this.lblItemCount);
@@ -231,6 +250,7 @@
         private System.Windows.Forms.Timer timMoveNumber;
         private System.Windows.Forms.Timer timWaiter;
         private System.Windows.Forms.ProgressBar pbrRandom;
+        private System.Windows.Forms.Label lblLine;
     }
 }
 

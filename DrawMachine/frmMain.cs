@@ -70,7 +70,7 @@ namespace DrawMachine
 
             DataRow dr;
 
-            foreach (KeyValuePair<string, string> item in ValueList)
+            foreach (KeyValuePair<string, string> item in ValueList.OrderBy(x=>x.Value))
             {
                 dr = dtList.NewRow();
 
@@ -196,7 +196,7 @@ namespace DrawMachine
 
         private void ShowResult()
         {
-            this.ResultCounter = this.ResultCounterFix + 1;
+            this.ResultCounter = this.ResultCounterFix + 1;            
             timShowResult.Enabled = true;
         }
 
@@ -300,6 +300,7 @@ namespace DrawMachine
             InitializeComponent();
 
             this.SetNumericFont(lblNumber);
+            this.SetNumericFont(lblItemCount);
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -452,11 +453,30 @@ namespace DrawMachine
             pbrRandom.Maximum = 500;
 
             Random r = new Random();
-            int rInt = r.Next(0, this.PossibleNextValues.Count);
+            int rInt = -1, preVal = -1;
+
+            if (this.PossibleNextValues.Count > 1)
+            {
+                int counter = 0;
+
+                do
+                {
+                    rInt = r.Next(0, this.PossibleNextValues.Count);
+
+                    if (counter >= 10)
+                    {
+                        break;
+                    }
+                } while (rInt == preVal);
+            }
+            else
+            {
+                rInt = r.Next(0, this.PossibleNextValues.Count);
+            }
 
             SetNumber(this.PossibleNextValues[rInt]);
 
-            this.RandomNumberMultiplier *= 1.125D;
+            this.RandomNumberMultiplier *= 1.11D;
             timShowNumbers.Interval += Convert.ToInt32(this.RandomNumberMultiplier); ;
 
             if (pbrRandom.Maximum > timShowNumbers.Interval)
@@ -499,12 +519,14 @@ namespace DrawMachine
                 lf.attachToControl(lblMoveNumber);
                 lf.setColorSteps(20);
                 lf.doFade();
-
+                 
                 timMoveNumber.Enabled = true;
             }
         }
         private void timShowResult_Tick(object sender, EventArgs e)
         {
+            timShowResult.Interval = 1000;
+
             this.ResultCounter--;
 
             if (this.ResultCounter > 0)
@@ -514,8 +536,8 @@ namespace DrawMachine
             }
             else
             {
-                lblNumber.ForeColor = System.Drawing.Color.Black;
-                SetNumber("-");
+                lblNumber.ForeColor = System.Drawing.Color.FromArgb(0, 51, 160);
+                SetNumber("*");
 
                 string code = "".PadLeft(NoLength, '*');
 
