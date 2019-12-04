@@ -15,10 +15,14 @@ namespace DrawMachine
     {
         System.Media.SoundPlayer Player;
 
-        int MaxIntervalForRoller = 200;
+        int RollOrderedNumbersCounter = -1;
+
+        int MaxIntervalForRoller = 500;
 
         int ResultCounterFix = 3;
         int ResultCounter = 0;
+
+        int GeneratedNumber = 0;
 
         int NoLength = 0;
 
@@ -193,9 +197,14 @@ namespace DrawMachine
 
             flpRandoms.Tag = "";
         }
-        private void PrepareNextNumber()
+        private void GenerateNumber()
         {
             this.PossibleNextValues = GetPossibleValues();
+
+            Random r = new Random();
+            int rInt = r.Next(0, this.PossibleNextValues.Count);
+
+            this.GeneratedNumber = this.PossibleNextValues[rInt];
         }
 
         private void ShowResult()
@@ -253,10 +262,6 @@ namespace DrawMachine
         {
             lblNumber.Left = (this.Width - lblNumber.Width) / 2;
             lblNumber.Top = (this.Height - lblNumber.Height) / 2;
-
-            pbrRandom.Width = 350;
-            pbrRandom.Left = (this.Width - pbrRandom.Width) / 2;
-            pbrRandom.Top = lblNumber.Top + lblNumber.Height;
         }
         private void SetNumber(object pText)
         {
@@ -274,7 +279,7 @@ namespace DrawMachine
 
                 RandomizeOrder();
 
-                PrepareNextNumber();
+                GenerateNumber();
 
                 timShowNumbers.Enabled = true;
             }
@@ -309,8 +314,6 @@ namespace DrawMachine
         private void frmMain_Load(object sender, EventArgs e)
         {
             SetNumberPosition();
-
-            pbrRandom.Maximum = this.MaxIntervalForRoller;
 
             Player = new System.Media.SoundPlayer(DrawMachine.Properties.Resources.tik);
         }
@@ -458,39 +461,21 @@ namespace DrawMachine
 
         private void timShowNumbers_Tick(object sender, EventArgs e)
         {
-            Random r = new Random();
-            int rInt = -1, preVal = -1;
-
-            if (this.PossibleNextValues.Count > 1)
+            if (this.RollOrderedNumbersCounter >= 9)
             {
-                int counter = 0;
-
-                do
-                {
-                    rInt = r.Next(0, this.PossibleNextValues.Count);
-
-                    if (counter >= 10)
-                    {
-                        break;
-                    }
-                } while (rInt == preVal);
-            }   
-            else
-            {
-                rInt = r.Next(0, this.PossibleNextValues.Count);
+                this.RollOrderedNumbersCounter = -1;
             }
 
             Player.Stop();
-            SetNumber(this.PossibleNextValues[rInt]);
+            SetNumber(++this.RollOrderedNumbersCounter);
             Player.Play();
 
             this.RandomNumberMultiplier *= 1.11D;
-            timShowNumbers.Interval += Convert.ToInt32(this.RandomNumberMultiplier); ;
+            timShowNumbers.Interval += Convert.ToInt32(this.RandomNumberMultiplier);
 
-            if (timShowNumbers.Interval > this.MaxIntervalForRoller)
+            if (timShowNumbers.Interval > this.MaxIntervalForRoller
+                && this.RollOrderedNumbersCounter == this.GeneratedNumber)
             {
-                pbrRandom.Value = pbrRandom.Maximum;
-
                 this.RandomNumberMultiplier = 1D;
 
                 timShowNumbers.Interval = 15;
@@ -512,10 +497,6 @@ namespace DrawMachine
                 lblMoveNumber.Visible = true;
 
                 timWaitThenMove.Enabled = true;
-            }
-            else
-            {
-                pbrRandom.Value = timShowNumbers.Interval;
             }
         }
         private void timWaitThenMove_Tick(object sender, EventArgs e)
@@ -562,7 +543,7 @@ namespace DrawMachine
         }
         private void timWaiter_Tick(object sender, EventArgs e)
         {
-            PrepareNextNumber();
+            GenerateNumber();
 
             timWaiter.Enabled = false;
             timShowNumbers.Enabled = true;

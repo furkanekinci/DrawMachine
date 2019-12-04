@@ -42,7 +42,6 @@
             this.lblItemCount = new System.Windows.Forms.Label();
             this.timMoveNumber = new System.Windows.Forms.Timer(this.components);
             this.timWaiter = new System.Windows.Forms.Timer(this.components);
-            this.pbrRandom = new System.Windows.Forms.ProgressBar();
             this.lblRandomMain = new DrawMachine.ucNumberWithRate();
             this.lblLine = new System.Windows.Forms.Label();
             this.timWaitThenMove = new System.Windows.Forms.Timer(this.components);
@@ -171,15 +170,6 @@
             this.timWaiter.Interval = 1000;
             this.timWaiter.Tick += new System.EventHandler(this.timWaiter_Tick);
             // 
-            // pbrRandom
-            // 
-            this.pbrRandom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbrRandom.Location = new System.Drawing.Point(371, 442);
-            this.pbrRandom.Name = "pbrRandom";
-            this.pbrRandom.Size = new System.Drawing.Size(206, 4);
-            this.pbrRandom.TabIndex = 9;
-            // 
             // lblRandomMain
             // 
             this.lblRandomMain.Location = new System.Drawing.Point(613, 52);
@@ -202,7 +192,7 @@
             // 
             // timWaitThenMove
             // 
-            this.timWaitThenMove.Interval = 1000;
+            this.timWaitThenMove.Interval = 2000;
             this.timWaitThenMove.Tick += new System.EventHandler(this.timWaitThenMove_Tick);
             // 
             // frmMain
@@ -211,7 +201,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.lblLine);
-            this.Controls.Add(this.pbrRandom);
             this.Controls.Add(this.lblRandomMain);
             this.Controls.Add(this.lblItemCount);
             this.Controls.Add(this.lblResult);
@@ -255,7 +244,6 @@
         private ucNumberWithRate lblRandomMain;
         private System.Windows.Forms.Timer timMoveNumber;
         private System.Windows.Forms.Timer timWaiter;
-        private System.Windows.Forms.ProgressBar pbrRandom;
         private System.Windows.Forms.Label lblLine;
         private System.Windows.Forms.Timer timWaitThenMove;
     }
