@@ -15,7 +15,7 @@ namespace DrawMachine
     {
         System.Media.SoundPlayer Player;
 
-        int MaxIntervalForRoller = 400;
+        int MaxIntervalForRoller = 200;
 
         int ResultCounterFix = 3;
         int ResultCounter = 0;
