@@ -70,7 +70,7 @@ namespace DrawMachine
 
             DataRow dr;
 
-            foreach (KeyValuePair<string, string> item in ValueList.OrderBy(x => x.Value))
+            foreach (KeyValuePair<string, string> item in ValueList.OrderBy(x => x.Key))
             {
                 dr = dtList.NewRow();
 
@@ -81,7 +81,7 @@ namespace DrawMachine
             }
 
             grdList.DataSource = dtList;
-            grdList.Columns[0].Visible = false;
+            grdList.Columns[0].Width = 40;
 
             lblItemCount.Text = ValueList.Count.ToString();
         }

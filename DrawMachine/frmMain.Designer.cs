@@ -51,7 +51,7 @@
             // 
             // btnLoadList
             // 
-            this.btnLoadList.Location = new System.Drawing.Point(157, 15);
+            this.btnLoadList.Location = new System.Drawing.Point(191, 16);
             this.btnLoadList.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadList.Name = "btnLoadList";
             this.btnLoadList.Size = new System.Drawing.Size(100, 28);
@@ -77,7 +77,7 @@
             this.grdList.Name = "grdList";
             this.grdList.ReadOnly = true;
             this.grdList.RowHeadersVisible = false;
-            this.grdList.Size = new System.Drawing.Size(241, 528);
+            this.grdList.Size = new System.Drawing.Size(275, 528);
             this.grdList.TabIndex = 1;
             // 
             // btnDraw
