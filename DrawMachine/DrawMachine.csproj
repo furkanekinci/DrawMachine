@@ -59,9 +59,45 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDrawing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDrawing.Designer.cs">
+      <DependentUpon>frmDrawing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNumberCounting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNumberCounting.Designer.cs">
+      <DependentUpon>frmNumberCounting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="LabelFader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucNumberCounter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucNumberCounter.Designer.cs">
+      <DependentUpon>ucNumberCounter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucNumberCounterArray.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucNumberCounterArray.Designer.cs">
+      <DependentUpon>ucNumberCounterArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucNumberCounterSliding.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucNumberCounterSliding.Designer.cs">
+      <DependentUpon>ucNumberCounterSliding.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucNumberWithRate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +106,15 @@
     </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDrawing.resx">
+      <DependentUpon>frmDrawing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNumberCounting.resx">
+      <DependentUpon>frmNumberCounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,6 +126,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ucNumberCounter.resx">
+      <DependentUpon>ucNumberCounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucNumberCounterArray.resx">
+      <DependentUpon>ucNumberCounterArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucNumberCounterSliding.resx">
+      <DependentUpon>ucNumberCounterSliding.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucNumberWithRate.resx">
       <DependentUpon>ucNumberWithRate.cs</DependentUpon>
     </EmbeddedResource>
