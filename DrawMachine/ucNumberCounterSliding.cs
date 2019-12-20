@@ -59,6 +59,37 @@ namespace DrawMachine
         }
         #endregion
 
+        internal void ShowResult()
+        {
+            Label currentLabel = null;
+            Label otherLabel = null;
+
+            if (lblNumber1.Top > 0
+                && lblNumber1.Top < this.Height / 2)
+            {
+                currentLabel = lblNumber1;
+                otherLabel = lblNumber2;
+            }
+            else
+            {
+                currentLabel = lblNumber2;
+                otherLabel = lblNumber1;
+            }
+
+            otherLabel.Top = -otherLabel.Height;
+            currentLabel.Top = 0;
+            currentLabel.Text = TargetValue.ToString();
+
+            this.SpeedMultiplier = 1D;
+
+            timCountNumbers.Interval = 15;
+            timCountNumbers.Enabled = false;
+
+            currentLabel.ForeColor = this.EndColor;
+
+            this.CountingFinished?.Invoke();
+        }
+
         public void Draw(int pTargetValue, int pCounterStart = 0)
         {
             this.TargetValue = pTargetValue;
@@ -182,17 +213,7 @@ namespace DrawMachine
                     && Convert.ToInt32(currentLabel.Tag) == this.TargetValue
                     && this.Sub > currentLabel.Top)
                 {
-                    otherLabel.Top = -otherLabel.Height;
-                    currentLabel.Top = 0;
-
-                    this.SpeedMultiplier = 1D;
-
-                    timCountNumbers.Interval = 15;
-                    timCountNumbers.Enabled = false;
-
-                    currentLabel.ForeColor = this.EndColor;
-
-                    this.CountingFinished?.Invoke();
+                    this.ShowResult();
                 }
             }
         }

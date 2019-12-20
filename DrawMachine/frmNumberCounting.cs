@@ -213,6 +213,12 @@ namespace DrawMachine
                 }
             }
 
+            if (this.Drawing
+                && e.KeyCode == Keys.F1)
+            {
+                nca.ShowResult();
+            }
+
             if (e.KeyCode == Keys.F11)
             {
                 this.ToggleFullscreen();

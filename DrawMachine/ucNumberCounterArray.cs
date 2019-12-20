@@ -77,6 +77,14 @@ namespace DrawMachine
             this.Controls.Clear();
         }
 
+        public void ShowResult()
+        {
+            foreach (ucNumberCounterSliding item in this.Controls)
+            {
+                item.ShowResult();
+            }
+        }
+
 
         public ucNumberCounterArray()
         {
