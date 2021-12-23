@@ -42,6 +42,7 @@
             this.lblWaitTop = new System.Windows.Forms.Label();
             this.nca = new DrawMachine.ucNumberCounterArray();
             this.lblWaitBottom = new System.Windows.Forms.Label();
+            this.lblShortcuts = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,11 +174,23 @@
             this.lblWaitBottom.TabIndex = 9;
             this.lblWaitBottom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblShortcuts
+            // 
+            this.lblShortcuts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblShortcuts.AutoSize = true;
+            this.lblShortcuts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblShortcuts.Location = new System.Drawing.Point(12, 693);
+            this.lblShortcuts.Name = "lblShortcuts";
+            this.lblShortcuts.Size = new System.Drawing.Size(336, 13);
+            this.lblShortcuts.TabIndex = 10;
+            this.lblShortcuts.Text = "F1: Quick Result, F4: Toggle Fullscreeen, F12: Load Data";
+            // 
             // frmNumberCounting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.lblShortcuts);
             this.Controls.Add(this.lblWaitBottom);
             this.Controls.Add(this.lblWaitTop);
             this.Controls.Add(this.nca);
@@ -219,6 +232,7 @@
         private System.Windows.Forms.Label lblRate;
         private System.Windows.Forms.Label lblWaitTop;
         private System.Windows.Forms.Label lblWaitBottom;
+        private System.Windows.Forms.Label lblShortcuts;
     }
 }
 

@@ -205,7 +205,7 @@ namespace DrawMachine
         {
             bool draw = false;
 
-            if (e.KeyCode == Keys.F2)
+            if (e.KeyCode == Keys.F12)
             {
                 if (!this.Drawing)
                 {
@@ -219,7 +219,7 @@ namespace DrawMachine
                 nca.ShowResult();
             }
 
-            if (e.KeyCode == Keys.F11)
+            if (e.KeyCode == Keys.F4)
             {
                 this.ToggleFullscreen();
             }
