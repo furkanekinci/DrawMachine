@@ -181,9 +181,9 @@
             this.lblShortcuts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblShortcuts.Location = new System.Drawing.Point(12, 693);
             this.lblShortcuts.Name = "lblShortcuts";
-            this.lblShortcuts.Size = new System.Drawing.Size(336, 13);
+            this.lblShortcuts.Size = new System.Drawing.Size(459, 13);
             this.lblShortcuts.TabIndex = 10;
-            this.lblShortcuts.Text = "F1: Quick Result, F4: Toggle Fullscreeen, F12: Load Data";
+            this.lblShortcuts.Text = "Double Space: Start, F1: Quick Result, F4: Toggle Fullscreeen, F12: Load Data";
             // 
             // frmNumberCounting
             // 
